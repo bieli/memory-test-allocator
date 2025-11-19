@@ -12,7 +12,7 @@ typedef struct {
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        fprintf(stderr, "Usage: %s <delay:unit:+N+M-N...>\n", argv[0]);
+        fprintf(stderr, "Usage: %s '<delay>:<unit>:<+N+M-N...>'\n", argv[0]);
         return 1;
     }
 
