@@ -12,7 +12,7 @@ typedef struct {
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        fprintf(stderr, "Usage: %s <delay:unit:sequence>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <delay:unit:+N+M-N...>\n", argv[0]);
         return 1;
     }
 
@@ -29,10 +29,12 @@ int main(int argc, char *argv[]) {
     int delay = atoi(delay_str);
     size_t unit_size = 1;
 
-    if (strcmp(unit_str, "MB") == 0) {
+    if (strcasecmp(unit_str, "MB") == 0) {
         unit_size = 1024 * 1024;
-    } else if (strcmp(unit_str, "KB") == 0) {
+    } else if (strcasecmp(unit_str, "kB") == 0 || strcasecmp(unit_str, "KB") == 0) {
         unit_size = 1024;
+    } else if (strcasecmp(unit_str, "B") == 0) {
+        unit_size = 1;
     } else {
         fprintf(stderr, "Unsupported unit: %s\n", unit_str);
         return 1;
